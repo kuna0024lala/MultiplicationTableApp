@@ -1,0 +1,28 @@
+<div class="container">
+  <h2>Multiplication Table Generator</h2>
+  <div>
+    <input [(ngModel)]="number" type="number" class="form-control" placeholder="Enter a number" />
+    <button (click)="generateTable()" class="btn btn-primary">Generate Table</button>
+  </div>
+  <div *ngIf="errorMessage" class="error-message">
+    {{ errorMessage }}
+  </div>
+  <table *ngIf="table.length > 0" class="table table-striped">
+    <thead>
+      <tr>
+        <th>Multiplication Table</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let value of table">
+        <td>{{ value }}</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3>Previous Entries</h3>
+  <ul>
+    <li *ngFor="let entry of entries">
+      {{ entry.number }} (Entered on {{ entry.createdAt | date:'short' }})
+    </li>
+  </ul>
+</div>
